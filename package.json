@@ -1,0 +1,18 @@
+{
+  "name": "earth",
+  "version": "1.0.0",
+  "description": "sos + smart contracts",
+  "main": "index.js",
+  "author": "AM-77",
+  "license": "MIT",
+  "scripts": {
+    "compile": "node_modules/.bin/solcjs --bin --abi smart-contract/Earthquake.sol -o smart-contract/dist",
+    "ganache": "node_modules/.bin/ganache-cli",
+    "deploy": "node ./lib/deploy.js"
+  },
+  "dependencies": {
+    "ganache-cli": "^6.10.1",
+    "solc": "^0.5.3",
+    "web3": "^1.2.11"
+  }
+}
