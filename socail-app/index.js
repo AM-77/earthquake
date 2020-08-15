@@ -11,7 +11,7 @@ web3.setProvider(provider)
 web3.eth.net.getId()
   .then(networkId => {
     
-    const contractAddr = "0x7820238168fa0459Da23df1660B48Db8E33664Bf" //vars.smartContractAddress
+    const contractAddr = "0x287016a3e1f742bA7089525733fD79F349adBE2a" //vars.smartContractAddress
     const TutorialToken = new web3.eth.Contract(vars.abi, contractAddr)
 
     TutorialToken.events.infoEvent({ fromBlock: 0 }, function(error, event){ 
@@ -21,7 +21,7 @@ web3.eth.net.getId()
         const date = log.returnValues.date
 
         if ( new Date().toDateString() === new Date(date * 1000).toDateString()) 
-          console.log("Today's event")
+          console.log("a new report is available")
         
       })
       .on('error', (log) => { console.log(`error:  ${log}`) })

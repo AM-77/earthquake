@@ -5,12 +5,13 @@ const readline = require("readline")
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const vars = require("../lib/vars")
 
-const contract = new web3.eth.Contract(vars.abi, "0x7820238168fa0459Da23df1660B48Db8E33664Bf")
+const address = "0x287016a3e1f742bA7089525733fD79F349adBE2a"
+const contract = new web3.eth.Contract(vars.abi, address)
 
 rl.question("[*] Enter infos: ", (infos) => {
   try {
     contract.methods.setInfo(infos)
-      .send({from: "0xF9D253Ede2295e2D7944921816dE9A094e6bEce6" /*vars.smartContractAddress */ }).then((err, res) => {
+      .send({from: "0x260B16E543d6E7372aB62a8bd87c54752870AAfF" /*vars.smartContractAddress */ }).then((err, res) => {
         console.log('[+] Your infos were published.')
         process.exit(0)
       })
