@@ -2,46 +2,51 @@ pragma solidity ^0.5.3;
 
 contract Earthquake {
     
-    // the earthquake center should deploy the smart contract
+    // the earthquake center address
     address payable owner;
+
+    // the social media address
+    address payable media;
     
     // contains the infos about the earthquake !
     string public info;
     
-    
-    // allow only the earthquake center to update the info
+    // allow only the earthquake center
     modifier ownerOnly() {
         require(msg.sender == owner);
         _;
     }
-    
+
     // notify the blockchain that the infos are updated
     event infoEvent ( uint date );
     
-    constructor () public payable{
+    constructor (address payable _media) public payable {
         owner = msg.sender;
+        media = _media;
     }
-    
-    // get the infos (for socail media )
-    function getInfo() public payable returns (string memory) {
         
-        // they mast pay at 1 ether for the infos
-        require(msg.value == 1000000000000000000);
-        
-        // senf the ether to the earthquake center
-        owner.transfer(1000000000000000000);
-        
-        // send the infos to the socail media system
-        return info;
-    }
-    
     // update the infos (for the earthquake center)
-    function setInfo(string memory the_info) public ownerOnly {
-        //update the info
+    function setInfo(string memory the_info) public payable ownerOnly {
+        // they mast pay at 1 ether for the infos to be published
+        require(msg.value == 1 ether);
+
+        // send the ether to the social media
+        media.transfer(1 ether);
+
+        // update the info
         info = the_info;
         
-        // triger the event in the blockchain
+        // notify the blockchain
         emit infoEvent(now);
+    }
+
+    // get the infos for socail media
+    function getInfo(address _media) public view returns (string memory) {    
+        // allow only the social media to get the data
+        require(media == _media);   
+
+        // send the infos
+        return info;
     }
     
 }
