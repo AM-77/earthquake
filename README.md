@@ -1,5 +1,7 @@
 # runnig process
 
+[0] `yarn`
+
 [1] `yarn start`
 
 [2] in another terminal : `yarn deploy`
