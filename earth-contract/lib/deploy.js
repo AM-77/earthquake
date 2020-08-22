@@ -5,13 +5,16 @@ const web3 = new Web3("http://localhost:8545")
 const vars = require("./vars")
 const fs = require('fs')
 
-const contract2deploy = new web3.eth.Contract(vars.abi)
+const abi = JSON.parse(fs.readFileSync('smart-contract/dist/smart-contract_Earthquake_sol_Earthquake.abi').toString())
+const bin = fs.readFileSync('smart-contract/dist/smart-contract_Earthquake_sol_Earthquake.bin').toString()
+
+const contract2deploy = new web3.eth.Contract(abi)
 
 web3.eth.getAccounts().then(accounts => {
   
   const varsFile = fs.readFileSync('lib/vars.js', 'utf8').toString().split("\n")
 
-  contract2deploy.deploy({ data: vars.bin, arguments: [accounts[1]] })
+  contract2deploy.deploy({ data: bin, arguments: [accounts[1]] })
     .send({ from: accounts[0], gas: 1500000, gasPrice: web3.utils.toWei('0.00003', 'ether') })
     .then((newContractInstance) => {
 
