@@ -32,15 +32,14 @@ web3.eth.net.getId()
             .call()
             .then(info => { 
               console.log('[+] report recieved.')
-
-              const res = infosController.saveInfo(info)
+              const { city, latitude, time, published, longitude, range, strength, description } = info
+              const res = infosController.saveInfo(JSON.stringify({ city, latitude, time, published, longitude, range, strength, description }))
               if ( res ) {
                 console.log('[+] report saved.')
               }
               else {
                 console.log('[!] database error.')
               }
-              // getBalance()
             })
             .catch(err => console.log(`[!] ${err}`))
       })

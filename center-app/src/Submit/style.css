@@ -1,0 +1,138 @@
+.buttonContainer {
+  text-align: center;
+  margin: 32px 0;
+}
+
+.animate-btn {
+  text-align: center;
+  display: inline-block;
+  font: 18px 'Abel', 'Century Gothic', 'arial' semibold;
+  text-transform: uppercase;
+  color: #f1f2f3;
+  line-height: 3rem;
+  background: #212121;
+  border-radius: 4rem;
+  cursor: pointer;
+  height: 3rem;
+  transition: all 0.4s cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  width: 10rem;
+}
+
+.animate-btn span {
+  opacity: 1;
+  transition: 0.2s 0.4s ease;
+}
+
+.animate-btn.loading {
+  background: #fb0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0rem;
+  transition: all 0.4s 0.2s cubic-bezier(0.9, 0.1, 0.1, 0.9);
+          animation: loadingAnimation 2s 0.48s infinite;
+}
+
+.animate-btn.loading span {
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+.animate-btn.success {
+  position: relative;
+  background: #3dcb5f;
+  width: 3rem;
+  height: 3rem;
+          animation: none;
+  transition: all 0.4s cubic-bezier(0.9, 0.1, 0.1, 0.9);
+}
+
+.animate-btn.success span {
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+.animate-btn.success::before,
+
+.animate-btn.success::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  height: 4px;
+  background: #fff;
+          transform-origin: 0% 50%;
+  z-index: 10;
+          animation: showPseudos 0.4s 0.2s cubic-bezier(0.9, 0.1, 0.1, 0.9) forwards;
+  opacity: 0;
+  left: 48%;
+  bottom: 0.8rem;
+}
+
+.animate-btn.success::before {
+  width: 14px;
+          transform: rotate(-135deg);
+}
+
+.animate-btn.success::after {
+  margin-left: -3px;
+  width: 24px;
+          transform: rotate(-45deg);
+}
+
+.animate-btn.error {
+  position: relative;
+  background: #da3b3b;
+  width: 3rem;
+  height: 3rem;
+          animation: none;
+  transition: all 0.4s cubic-bezier(0.9, 0.1, 0.1, 0.9);
+}
+
+.animate-btn.error span {
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+.animate-btn.error::before,
+.animate-btn.error::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  height: 4px;
+  width: 2rem;
+  left: 50%;
+  margin-left: -1rem;
+  background: #fff;
+  transform-origin: 50% 50%;
+  z-index: 10;
+  animation: showPseudos 0.4s 0.2s cubic-bezier(0.9, 0.1, 0.1, 0.9) forwards;
+  opacity: 0;
+  top: 50%;
+  margin-top: -2px;
+  border-radius: 3px;
+}
+
+.animate-btn.error::before {
+          transform: rotate(-135deg);
+}
+
+.animate-btn.error::after {
+          transform: rotate(-45deg);
+}
+
+@keyframes loadingAnimation {
+  0% {
+    box-shadow: 0px 0px 0px 0px #fb0;
+  }
+  100% {
+    box-shadow: 0px 0px 0px 1rem rgba(255,187,0,0);
+  }
+}
+
+@keyframes showPseudos {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

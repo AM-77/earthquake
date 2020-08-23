@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
+    "smart-contract":"node smart-contract.js",
     "dev": "nodemon index.js"
   },
   "dependencies": {
