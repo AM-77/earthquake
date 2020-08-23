@@ -1,11 +1,11 @@
-/* -!- DONT UPDATE THIS FILE MANUALY -!- */
+/* -!- DONT UPDATE THIS FILE MANUALY NO MATTER WAHT -!- */
 const fs = require("fs")
 
 // const abi = JSON.parse(fs.readFileSync(process.cwd() + '/smart-contract/dist/smart-contract_Earthquake_sol_Earthquake.abi').toString())
 // const bin = fs.readFileSync(process.cwd() + '/smart-contract/dist/smart-contract_Earthquake_sol_Earthquake.bin').toString()
 
-const smartContractAddress = "0x4a7b2caBAa4d5711596e9923B828fF9c855d821D"
-const centerAddress = "0xdF14479712d0BE2BCA209bca3631A37D5f78a217"
-const mediaAddress = "0x5A3951d8e62E8d2c29e89d6253c2386153194713"
+const smartContractAddress = "0x3862b532AC2e2F6cDa90cdbb8D23A139d73A4aeB"
+const centerAddress = "0x38AfBC176b72fD70087544C28b00ff070969e22F"
+const mediaAddress = "0x5164198c49d6ec8DE88Ea5687D6015124B1A2306"
 
 module.exports = { mediaAddress, centerAddress, smartContractAddress }
