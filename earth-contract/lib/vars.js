@@ -1,11 +1,7 @@
 /* -!- DONT UPDATE THIS FILE MANUALY NO MATTER WAHT -!- */
-const fs = require("fs")
-
-// const abi = JSON.parse(fs.readFileSync(process.cwd() + '/smart-contract/dist/smart-contract_Earthquake_sol_Earthquake.abi').toString())
-// const bin = fs.readFileSync(process.cwd() + '/smart-contract/dist/smart-contract_Earthquake_sol_Earthquake.bin').toString()
-
-const smartContractAddress = "0x3862b532AC2e2F6cDa90cdbb8D23A139d73A4aeB"
-const centerAddress = "0x38AfBC176b72fD70087544C28b00ff070969e22F"
-const mediaAddress = "0x5164198c49d6ec8DE88Ea5687D6015124B1A2306"
-
-module.exports = { mediaAddress, centerAddress, smartContractAddress }
+const smartContractAddress = "0x76c1f95F4170270afd1f039E8ec9A52AcaA92e97"
+const centerAddress = "0xE82E936b8A405d32410A6F603433724d644CD070"
+const mediaAddress = "0x8438ff95C9223844467DB8CE326D263466107761"
+const lawAddress = "0x40548C5Eb17e67505482D11964cB5BebdFA22F8A"
+const civilAddress = "0x6c84345E838Fbc509f94399d8FB2C6895584C1a0"
+module.exports = { smartContractAddress, centerAddress, mediaAddress, lawAddress, civilAddress }
