@@ -1,17 +1,17 @@
 {
-  "name": "media-cli",
+  "name": "media-service",
   "version": "1.0.0",
   "main": "index.js",
   "author": "AM-77",
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
-    "smart-contract":"node smart-contract.js",
     "dev": "nodemon index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "socket.io": "^2.3.0",
     "sqlite3": "^5.0.0",
     "web3": "^1.2.11"
   },

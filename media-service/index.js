@@ -1,12 +1,47 @@
-#!/usr/bin/env node
-const express = require('express')
-const app = express()
-const cors = require("cors")
+const app = require('express')()
+const http = require('http').createServer(app)
+const io = require('socket.io')(http)
+const fs = require('fs')
+const Web3 = require('web3')
+const vars = require("../earth-contract/lib/vars")
+const web3 = new Web3()
+const providerUrl = 'ws://localhost:8545'
+const provider = new Web3.providers.WebsocketProvider(providerUrl)
+web3.setProvider(provider)
 
-app.use(cors())
-app.use(express.json())
+const abi = JSON.parse(fs.readFileSync('../earth-contract/smart-contract/dist/smart-contract_Earthquake_sol_Earthquake.abi').toString())
+io.on('infos', (infos) => { console.log(infos) })
+web3.eth.net.getId()
+  .then(networkId => {
+    console.log(`[+] Listening to events on: ${vars.smartContractAddress}`)
 
-app.use(require("./app/routes"))
+    const contract = new web3.eth.Contract(abi, vars.smartContractAddress)
+    contract.events
+      .infoEvent({ fromBlock: 0 }, (err, event) => { 
+        if ( err ) console.log(`[!] ${err}`) 
+      })
+      .on('data', log => {
+          console.log("[*] A new report is available.")
+          contract.methods.getInfo(vars.mediaAddress)
+            .call()
+            .then(infos => { 
+              console.log('[+] report recieved.\n')  
+                       
+              io.emit('infos', {
+                city: infos[0],
+                latitude: infos[1],
+                longitude: infos[2],
+                time: infos[3],
+                published: infos[4],
+                range: infos[5],
+                strength: infos[6],
+                description: infos[7]
+              })
+            })
+            .catch(err => console.log(`[!] ${err}`))
+      })
+      .on('error', log => console.log(`[!] ${log}`) )
+  })
 
 const PORT = process.env.PORT || 3002
-app.listen(PORT, () => console.log(`The app is 🏃🏃🏃 on 🚪:${PORT}`))
+http.listen(PORT, () => console.log(`The media service is 🏃🏃🏃 on 🚪:${PORT}`))
