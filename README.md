@@ -18,12 +18,22 @@ in another terminal: `yarn deploy`
 
 `yarn start`
 
-## 4 - media-service
+## 4 - law-service
 
 `yarn start`
 
-in another terminal : `yarn smart-contract`
+## 5 - law-app
 
-## 5 - media-app
+`yarn start`
+
+## 6 - civil-service
+
+`yarn start`
+
+## 7 - media-service
+
+`yarn start`
+
+## 8 - media-app
 
 `yarn start`
