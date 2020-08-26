@@ -9,8 +9,6 @@
     "compile": "node_modules/.bin/solcjs --bin --abi smart-contract/Earthquake.sol -o smart-contract/dist",
     "ganache": "node_modules/.bin/ganache-cli",
     "deploy": "node lib/deploy.js",
-    "media": "node media-cli/index.js",
-    "center": "node center-cli/index.js",
     "start": "yarn compile && yarn ganache"
   },
   "dependencies": {
