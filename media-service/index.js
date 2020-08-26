@@ -24,10 +24,8 @@ web3.eth.net.getId()
           console.log("[*] A new report is available.")
           contract.methods.getInfo(vars.mediaAddress)
             .call()
-            .then(infos => { 
-              console.log('[+] report recieved.\n')  
-                       
-              io.emit('infos', {
+            .then(infos => {               
+              const info = {
                 city: infos[0],
                 latitude: infos[1],
                 longitude: infos[2],
@@ -36,7 +34,13 @@ web3.eth.net.getId()
                 range: infos[5],
                 strength: infos[6],
                 description: infos[7]
-              })
+              }
+
+              console.log('[+] report recieved: \n')   
+              console.log(info)
+              console.log("\n")
+
+              io.emit('infos', info)
             })
             .catch(err => console.log(`[!] ${err}`))
       })
