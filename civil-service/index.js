@@ -13,7 +13,7 @@ const abi = JSON.parse(fs.readFileSync('../earth-contract/smart-contract/dist/sm
 
 web3.eth.net.getId()
   .then(networkId => {
-    console.log(`[+] media smart-connect is listening to ${vars.smartContractAddress} events.`)
+    console.log(`[+] Listening to ${vars.smartContractAddress} events.`)
 
     const contract = new web3.eth.Contract(abi, vars.smartContractAddress)
     contract.events
